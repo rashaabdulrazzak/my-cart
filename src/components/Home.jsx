@@ -1,9 +1,10 @@
 import React from "react";
-
+import { useGetAllProductsQuery } from "../features/productsApi";
 const Home = () => {
+  const { data, error, isLoading } = useGetAllProductsQuery();
   return (
     <div>
-      <p>llllllllllllllllllllllllllllll llllllllllllllllll</p>
+      <p>home</p>
     </div>
   );
 };
