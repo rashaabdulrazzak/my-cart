@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Nunito', 'san-serif';
 }
 
 /* nav bar*/
@@ -42,4 +43,22 @@
   font-size: 14px;
   font-weight: 700;
   margin-left: 3px;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(68, 68, 68);
+  min-height: 88vh;
+
+}
+
+.not-found h2 {
+  font-size: 52px;
+}
+
+.not-found p {
+  font-size: 20px;
 }

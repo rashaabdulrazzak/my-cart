@@ -3,11 +3,12 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Redirect,
+  Navigate,
 } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import Home from "./components/Home";
+import NotFound from "./components/NotFound";
 function App() {
   return (
     <div className="App">
@@ -15,7 +16,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/cart" element={<Cart />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" exact element={<Home />} />
+          <Route path="/not-found" element={<NotFound />} />
+          {/* not existing route redirect to not found */}
+          <Route path="*" element={<Navigate to="/not-found" />} />
         </Routes>
       </Router>
     </div>
