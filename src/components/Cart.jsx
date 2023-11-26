@@ -1,8 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFromCart } from "../features/cartSlice";
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const handleRemoveCart = (product) => {
+    dispatch(removeFromCart(product));
+  };
   console.log("cart", cart.cartItems);
   return (
     <div className="cart-container">
@@ -18,7 +24,7 @@ const Cart = () => {
                   width="28"
                   height="28"
                   fill="currentColor"
-                  classNmae="bi bi-arrow-left"
+                  className="bi bi-arrow-left"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -47,7 +53,13 @@ const Cart = () => {
                   <div>
                     <h4>{product.title}</h4>
                     <p>{product.description}</p>
-                    <button>remove</button>
+                    <button
+                      onClick={() => {
+                        handleRemoveCart(product);
+                      }}
+                    >
+                      remove
+                    </button>
                     <h5>${product.price}</h5>
                   </div>
                   <div className="cart-product-price">${product.price}</div>
