@@ -49,7 +49,24 @@ const cartSlice = createSlice({
         return state;
       });
     },
+    decreaseCart(state, action) {
+      let itemIndex = state.cartItems.findIndex(
+        (cartItem) => cartItem.id === action.payload.id
+      );
+      if (state.cartItems[itemIndex].cartQuantity > 1) {
+        state.cartItems[itemIndex].cartQuantity -= 1;
+        toast.info(` Decreased ${action.payload.title} cart quantity`, {
+          position: "bottom-left",
+        });
+        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      } else if (state.cartItems[itemIndex].cartQuantity === 1) {
+        toast.warn(
+          `Cannot remove all items of ${action.payload.title}. Please delete it from your cart`,
+          { position: "bottom-left" }
+        );
+      }
+    },
   },
 });
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, decreaseCart } = cartSlice.actions;
 export default cartSlice.reducer;
