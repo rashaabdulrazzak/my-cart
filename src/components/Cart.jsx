@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -6,6 +6,7 @@ import {
   decreaseCart,
   addToCart,
   clearCart,
+  getTotals,
 } from "../features/cartSlice";
 
 const Cart = () => {
@@ -23,7 +24,9 @@ const Cart = () => {
   const handleClearCart = (product) => {
     dispatch(clearCart(product));
   };
-
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
   return (
     <div className="cart-container">
       <h2>Shopping Cart</h2>

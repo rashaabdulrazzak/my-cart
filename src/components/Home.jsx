@@ -16,6 +16,7 @@ const Home = () => {
     dispatch(addToCart(product));
     navigate("/cart");
   };
+
   return (
     <div className="home-container">
       {isLoading ? (
