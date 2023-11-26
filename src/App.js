@@ -9,10 +9,14 @@ import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
+import { ToastContainer } from "react-toastify";
+// import "react-toastify/scss/animations";
+import "react-toastify/dist/ReactToastify.min.css";
 function App() {
   return (
     <div className="App">
       <Router>
+        <ToastContainer />
         <NavBar />
         <Routes>
           <Route path="/cart" element={<Cart />} />
